@@ -46,4 +46,21 @@ describe("getMarkdown normalizes U+00A0 in wysiwyg/ir", () => {
         expect(md).not.toMatch(/\u00a0/);
         expect(md).toMatch(/identifiable \*\*feeder patterns\*\*/);
     });
+
+    it("keeps a regular space before bold inside a table cell after IR serialize", () => {
+        const lute = newLute();
+        const html = "<table data-block=\"0\" data-type=\"table\"><thead><tr><th>q</th></tr></thead>" +
+            "<tbody><tr><td>identifiable&nbsp;<span data-type=\"strong\" class=\"vditor-ir__node\">" +
+            "<span class=\"vditor-ir__marker vditor-ir__marker--bi\">**</span>" +
+            "<strong data-newline=\"1\">feeder patterns</strong>" +
+            "<span class=\"vditor-ir__marker vditor-ir__marker--bi\">**</span></span></td></tr></tbody></table>";
+        const vditor: any = {
+            currentMode: "ir",
+            lute,
+            ir: {element: {innerHTML: html}},
+        };
+        const md = getMarkdown(vditor);
+        expect(md).not.toMatch(/\u00a0/);
+        expect(md).toMatch(/identifiable \*\*feeder patterns\*\*/);
+    });
 });
