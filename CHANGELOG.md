@@ -32,7 +32,7 @@
 
 * [open issues](https://github.com/Vanessa219/vditor/issues)
 
-### v4.0.0 / 2026
+### v4.0.0 / 2026-08-30
 
 * [WYSIWYG 和 IR 模式保存时会写入不换行空格](https://github.com/Vanessa219/vditor/issues/1938) `修复缺陷`
 * [上传失败时编辑器内容会被修改](https://github.com/Vanessa219/vditor/issues/1918) `修复缺陷`
